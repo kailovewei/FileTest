@@ -21,7 +21,6 @@ import java.io.OutputStreamWriter;
 public class MainActivity extends AppCompatActivity {
     private Button r_button;
     private EditText editText;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,17 +32,18 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String inputText=load();
+                //一次性进行判断两种空值，传入的字符串等于空或者空的字符串。
                 if(!TextUtils.isEmpty(inputText))
                 {
                     editText.setText(inputText);
-                    editText.setSelection(inputText.length());
+                    editText.setSelection(inputText.length());//将输入光标移动到某一位置以便继续输入。
                     Toast.makeText(MainActivity.this,"Restoring succeeded",Toast.LENGTH_SHORT).show();
                 }
 
             }
         });
     }
-
+//每次在活动销毁之前调用save方法保存数据
     @Override
     protected void onDestroy() {
         super.onDestroy();
